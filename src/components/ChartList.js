@@ -3,9 +3,13 @@ import './ChartList.css';
 
 const ChartList = (props) => {
   const names = props.songs.map((song ,index) =>{
-    return <div>
+    return <div value={index} key={index}>
     <br/>
-    <li value={index} key={index}><img src={song["im:image"][0].label} alt={song["im:name"]}/> {song.title.label}</li>
+    <li><img src={song["im:image"][0].label} alt={song["im:name"]}/> {song.title.label}</li>
+    <ul>
+    <li>Chart Position: {index + 1}</li>
+    <li>Release date: {song["im:releaseDate"].attributes.label}</li>
+    </ul>
     <br/>
     <audio controls>
       <source src={song.link[1].attributes.href} type={song.link[1].attributes.type}/>
